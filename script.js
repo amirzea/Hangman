@@ -22,7 +22,7 @@ function generateBoard() {
         letter = String.fromCharCode(i);
 		document.getElementById("board").innerHTML += 
         `
-        <button style="border-radius:10px;" class="btn btn-primary" id="${letter}" onclick="refreshBoard(this.id)">${letter}</button>
+        <button style="border-radius:10px;" class="btn btn-light" id="${letter}" onclick="refreshBoard(this.id)">${letter}</button>
         `;
     } 
 }
@@ -49,9 +49,13 @@ function refreshBoard(elementID) {
 }
 
 function youLost() {
-    document.getElementById("endGame").innerHTML = "Sorry, you lost &#128533";
+    document.getElementById("endGame").innerHTML = "Sorry, you lost &#128533" + 
+    `<br><button class="btn btn-info" onclick="history.go(0)"> Play again </br>
+    `;
 }
 
 function youWon() {
-    document.getElementById("endGame").innerHTML = "Congrats, you won &#127881";
+    document.getElementById("endGame").innerHTML = "Congrats, you won &#127881" + 
+    `<br><button class="btn btn-info" onclick="history.go(0)"> Play again </br>
+    `;
 }
