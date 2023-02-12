@@ -1,9 +1,8 @@
 let word, attempts = 6, letters_guessed = 0;
-let board = document.getElementById("board");
 
 function savedWord() {
     word = document.getElementById("userInput").value;
-    board.innerHTML = "";
+    document.getElementById("board").innerHTML = "";
     generateBoard();
 }
 
@@ -11,13 +10,13 @@ function generateBoard() {
     document.getElementById("pictureHangman").src = attempts + ".jpg";
     document.getElementById("title").innerHTML = "Hangman";
     for (let i = 0; i < word.length; ++i) {
-       board.innerHTML +=
+        document.getElementById("board").innerHTML +=
        `<u style="display: inline-block" class="${word.charAt(i)}">_</u>
        `;
     }    
-    board.innerHTML += `<br><br>`;    
+    document.getElementById("board").innerHTML += `<br><br>`;    
     for (let i = 97; i <= 122; ++i) {
-	board.innerHTML += 
+        document.getElementById("board").innerHTML += 
         `<button style="border-radius:10px;" class="btn btn-light" id="${String.fromCharCode(i)}" onclick="refreshBoard(this.id)">${String.fromCharCode(i)}</button>
         `;
     } 
@@ -32,7 +31,7 @@ function refreshBoard(elementID) {
             youLost();
         }
     } else {
-        for (let i = 0; i < letters_array.length; ++i) {
+        for (let i = 0; i < document.getElementsByClassName(elementID).length; ++i) {
             document.getElementsByClassName(elementID)[i].innerHTML = elementID;
         }
         letters_guessed += document.getElementsByClassName(elementID).length;
